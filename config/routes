@@ -25,3 +25,4 @@
 
 /cartaslist/#CartaId CartaDeleteR POST
 
+/cartaEdit/#CartaId CartaEditR GET POST

@@ -72,3 +72,25 @@ getCartaListR  = do
 getAllCartas :: DB [Entity Carta]
 getAllCartas = selectList [] [Asc CartaNombrecarta]
 
+--Edit
+
+getCartaEditR :: CartaId -> Handler Html
+getCartaEditR cartaId  = do
+               carta <- runDB $ get404 cartaId
+               (widget, encoding) <- generateFormPost $ renderBootstrap3 BootstrapBasicForm $ cartaForm  (Just carta)
+               defaultLayout $ do
+                   let actionR = CartaEditR cartaId
+                   $(widgetFile "Carta")
+
+postCartaEditR :: CartaId -> Handler Html
+postCartaEditR cartaId  = do
+                carta <- runDB $ get404 cartaId
+                ((result,widget), encoding) <- runFormPost $ renderBootstrap3 BootstrapBasicForm $ cartaForm  (Just carta)
+                case result of
+                     FormSuccess cartaResult -> do
+                                 _ <- runDB $ replace cartaId  cartaResult
+                                 redirect CartaListR
+                     _ -> defaultLayout $ do
+                        let actionR = CartaEditR cartaId
+                        $(widgetFile "Carta")
+

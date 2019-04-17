@@ -15,6 +15,7 @@ $else
                      <th> Defensa
                      <th> Icono
                      <th>
+                     <th>
 
 
         $forall Entity cartaId carta <- cartas
@@ -49,4 +50,11 @@ $else
                           <form action="@{CartaDeleteR cartaId}" method="post">
                                                      <input type="submit" name="upvote" value="Borrar Carta" />
 
-    
+                    <td>
+                          <a href=@{CartaEditR cartaId} .btn .btn-warning .pull-right>
+                              <span .glyphicon .glyphicon-edit>
+                              Editar Carta
+
+<a  href=@{CartaNewR} .btn .btn-primary .pull-right>
+                              <span .glyphicon .glyphicon-plus>
+                              Crear
