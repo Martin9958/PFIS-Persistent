@@ -26,3 +26,5 @@
 /cartaslist/#CartaId CartaDeleteR POST
 
 /cartaEdit/#CartaId CartaEditR GET POST
+
+/cartaSearch CartaSearchR GET POST

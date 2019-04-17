@@ -1,6 +1,11 @@
 <div>
 
 <h1> Cartas en Inventario
+
+<a  href=@{CartaSearchR} .btn .btn-primary .pull-left>
+                              <span .glyphicon .glyphicon-search>
+                              Buscar
+
 $if null cartas
     <p> No hay cartas ingresadas
 $else
@@ -55,6 +60,7 @@ $else
                               <span .glyphicon .glyphicon-edit>
                               Editar Carta
 
-<a  href=@{CartaNewR} .btn .btn-primary .pull-right>
+<a  href=@{CartaNewR} .btn .btn-primary .pull-left>
                               <span .glyphicon .glyphicon-plus>
                               Crear
+

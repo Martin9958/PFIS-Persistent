@@ -173,6 +173,7 @@ instance Yesod App where
     isAuthorized CartaListR _ = return Authorized
     isAuthorized (CartaDeleteR _) _ = return Authorized
     isAuthorized (CartaEditR _) _ = return Authorized
+    isAuthorized CartaSearchR _ = return Authorized
 
 
     -- the profile route requires that the user is authenticated, so we

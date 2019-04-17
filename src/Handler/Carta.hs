@@ -94,3 +94,23 @@ postCartaEditR cartaId  = do
                         let actionR = CartaEditR cartaId
                         $(widgetFile "Carta")
 
+--Search
+
+getCartaSearchR ::  Handler Html
+getCartaSearchR = do
+           (widget, encoding) <- generateFormPost $ renderBootstrap3 BootstrapBasicForm $ cartaForm Nothing
+           defaultLayout $ do
+                let actionR = CartaSearchR
+                $(widgetFile "CartaSearch")
+
+postCartaSearchR :: Handler Html
+postCartaSearchR = do
+                ((result,widget), encoding) <- runFormPost $ renderBootstrap3 BootstrapBasicForm $ cartaForm  Nothing
+                case result of
+                     FormSuccess _ -> do
+                                 cartas <- runDB $ selectList [] []
+                                 defaultLayout $ do
+                                    $(widgetFile "CartaView")
+                     _ -> defaultLayout $ do
+                        let actionR = CartaSearchR
+                        $(widgetFile "Carta")

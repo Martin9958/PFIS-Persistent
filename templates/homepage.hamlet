@@ -22,3 +22,6 @@
             <form action="/cartaslist">
                 <input type="submit" value="Listado de Cartas" .btn .btn-danger />
 
+        <div .row>
+            <form action="/cartaSearch">
+                <input type="submit" value="Buscar Cartas" .btn .btn-danger />
